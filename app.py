@@ -26,8 +26,8 @@ with app.app_context():
 @app.route('/')
 def home():
     if 'user_id' in session:
-        return f"Hello, {session['user_id']}! Welcome back to My Memory Quiz."
-    return render_template('index.html')
+        return redirect(url_for('category'))  # 로그인 상태이면 카테고리 페이지로 이동
+    return render_template('index.html')  # 로그인하지 않은 경우 인덱스 페이지로 이동
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -36,16 +36,13 @@ def signup():
         password = request.form['passwd']
         confirm_password = request.form['cpasswd']
 
-        # 비밀번호와 확인 비밀번호가 일치하는지 확인
         if password != confirm_password:
             return "Passwords do not match. Please try again."
 
-        # 같은 아이디가 있는지 확인
         existing_user = User.query.filter_by(user_id=user_id).first()
         if existing_user:
             return "This user ID already exists. Please try a different one."
 
-        # 새로운 유저 생성
         new_user = User(user_id=user_id, password=password)
         db.session.add(new_user)
         try:
@@ -55,7 +52,6 @@ def signup():
             print(f"Error occurred: {e}")
             return "Error occurred during sign up. Please try again.", 500
 
-        # 회원가입 성공 후 자동 로그인
         session['user_id'] = new_user.user_id
         return redirect(url_for('home'))
 
@@ -71,7 +67,7 @@ def login():
 
         if user and user.password == user_password:
             session['user_id'] = user.user_id
-            return redirect(url_for('home'))
+            return redirect(url_for('category'))  # 로그인 성공 시 category로 이동
         else:
             return "Login failed. Please check your ID and password."
 
@@ -81,6 +77,13 @@ def login():
 def logout():
     session.pop('user_id', None)
     return redirect(url_for('home'))
+
+# 새로 추가된 category 라우트
+@app.route('/category')
+def category():
+    if 'user_id' in session:
+        return render_template('category.html')
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
