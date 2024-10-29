@@ -1,15 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from models import db, User
+from models import db, User, Flashcard  # models.py에서 가져오기
 
+# Flask 애플리케이션 설정
 app = Flask(__name__)
-
-# 데이터베이스 설정
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# 시크릿 키 설정
 app.secret_key = 'your_secret_key'
 
 # 데이터베이스 초기화
@@ -78,12 +76,41 @@ def logout():
     session.pop('user_id', None)
     return redirect(url_for('home'))
 
-# 새로 추가된 category 라우트
 @app.route('/category')
 def category():
     if 'user_id' in session:
         return render_template('category.html')
     return redirect(url_for('login'))
+
+@app.route('/flashcards', methods=['GET', 'POST'])
+def flashcards():
+    if 'user_id' in session:
+        if request.method == 'POST':
+            title = request.form['title']
+            content = request.form['content']
+            new_card = Flashcard(title=title, content=content, user_id=session['user_id'])
+            db.session.add(new_card)
+            db.session.commit()
+            return redirect(url_for('flashcards'))
+        return render_template('flashcards.html')
+    return redirect(url_for('login'))
+
+@app.route('/create_card', methods=['POST'])
+def create_card():
+    if 'user_id' not in session:
+        return jsonify({"error": "로그인이 필요합니다."}), 401
+
+    data = request.json
+    title = data.get('title', '')
+    content = data.get('content', '')
+
+    if not title or not content:
+        return jsonify({"error": "제목과 내용을 입력해야 합니다."}), 400
+
+    new_card = Flashcard(title=title, content=content, user_id=session['user_id'])
+    db.session.add(new_card)
+    db.session.commit()
+    return jsonify({"message": "카드가 추가되었습니다!"})
 
 if __name__ == '__main__':
     app.run(debug=True)
