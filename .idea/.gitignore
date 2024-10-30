@@ -1,15 +1,1 @@
-# 모든 파일 무시
-*
-
-# .venv 폴더 무시
 .venv/
-
-# 특정 파일/폴더만 제외하여 Git에 포함
-!.gitignore
-!README.md
-!app.py
-!models.py
-!requirements.txt
-!static/
-!templates/
-!.idea/

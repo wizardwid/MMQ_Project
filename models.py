@@ -1,15 +1,19 @@
 from flask_sqlalchemy import SQLAlchemy
 
-# SQLAlchemy 객체 생성
 db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(50), nullable=False)
+    user_id = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(200), nullable=False)
 
 class Flashcard(db.Model):
+    __tablename__ = 'flashcard'  # 테이블 이름 명시
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)  # 암기장의 제목
-    content = db.Column(db.Text, nullable=False)  # 카드의 내용
+    title = db.Column(db.String(200), nullable=False)  # title 열 정의
+    content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    user = db.relationship('User', backref='flashcards')
+
+
