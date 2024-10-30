@@ -1,0 +1,536 @@
+<changelist name="변경" date="1730218612438" recycled="false">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/변경/shelved.patch" />
+  <option name="DESCRIPTION" value="변경" />
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/greenlet/_greenlet.cp312-win_amd64.pyd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/_greenlet.cp312-win_amd64.pyd" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/markupsafe/_speedups.cp312-win_amd64.pyd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/_speedups.cp312-win_amd64.pyd" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/greenlet/tests/_test_extension.cp312-win_amd64.pyd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/_test_extension.cp312-win_amd64.pyd" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/greenlet/tests/_test_extension_cpp.cp312-win_amd64.pyd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/_test_extension_cpp.cp312-win_amd64.pyd" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/af/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/ar/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin1.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/be/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin2.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/ca_ES/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin3.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/cs/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin4.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/da/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin5.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/de/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin6.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/el/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin7.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/en/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin8.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/es/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin9.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/et/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin10.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/fa/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin11.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/fi/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin12.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/fr/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin13.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/he/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin14.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/hu/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin15.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/it/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin16.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/ja/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin17.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/ko/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin18.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/nl/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin19.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/no/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin20.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/pa/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin21.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/pl/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin22.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/pt/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin23.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/pt_BR/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin24.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/ro/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin25.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/ru/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin26.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/sk/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin27.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/sr/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin28.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/sv/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin29.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/tr/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin30.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/uk/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin31.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/vi/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin32.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/zh_Hans_CN/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin33.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/translations/zh_Hant_TW/LC_MESSAGES/admin.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/admin34.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/x-editable/img/clear.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/clear.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/sqlalchemy/cyextension/collections.cp312-win_amd64.pyd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/collections.cp312-win_amd64.pyd" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/werkzeug/debug/shared/console.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/console.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/tests/data/copyleft.gif" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/copyleft.gif" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/tests/data/copyleft.jpeg" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/copyleft.jpeg" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/tests/data/copyleft.jpg" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/copyleft.jpg" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/tests/data/copyleft.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/copyleft.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/tests/data/copyleft.tiff" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/copyleft.tiff" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-brands-400.eot" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-brands-400.eot" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-brands-400.ttf" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-brands-400.ttf" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-brands-400.woff" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-brands-400.woff" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-brands-400.woff2" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-brands-400.woff2" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-regular-400.eot" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-regular-400.eot" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-regular-400.ttf" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-regular-400.ttf" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-regular-400.woff" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-regular-400.woff" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-regular-400.woff2" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-regular-400.woff2" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-solid-900.eot" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-solid-900.eot" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-solid-900.ttf" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-solid-900.ttf" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-solid-900.woff" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-solid-900.woff" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/fontawesome-free-5.1.0-web/webfonts/fa-solid-900.woff2" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fa-solid-900.woff2" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Scripts/flask.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/flask.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap4/fonts/FontAwesome.otf" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/FontAwesome.otf" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap4/fonts/fontawesome-webfont.eot" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fontawesome-webfont.eot" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap4/fonts/fontawesome-webfont.ttf" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fontawesome-webfont.ttf" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap4/fonts/fontawesome-webfont.woff" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fontawesome-webfont.woff" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap4/fonts/fontawesome-webfont.woff2" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/fontawesome-webfont.woff2" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap2/swatch/img/glyphicons-halflings.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/glyphicons-halflings.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap3/swatch/fonts/glyphicons-halflings-regular.eot" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/glyphicons-halflings-regular.eot" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap3/swatch/fonts/glyphicons-halflings-regular.ttf" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/glyphicons-halflings-regular.ttf" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap3/swatch/fonts/glyphicons-halflings-regular.woff" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/glyphicons-halflings-regular.woff" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap3/swatch/fonts/glyphicons-halflings-regular.woff2" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/glyphicons-halflings-regular.woff2" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/bootstrap/bootstrap2/swatch/img/glyphicons-halflings-white.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/glyphicons-halflings-white.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/sqlalchemy/cyextension/immutabledict.cp312-win_amd64.pyd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/immutabledict.cp312-win_amd64.pyd" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/leaflet/images/layers.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/layers.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/leaflet/images/layers-2x.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/layers-2x.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/werkzeug/debug/shared/less.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/less.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/x-editable/img/loading.gif" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/loading.gif" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/leaflet/images/marker-icon.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/marker-icon.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/leaflet/images/marker-icon-2x.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/marker-icon-2x.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/leaflet/images/marker-shadow.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/marker-shadow.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/werkzeug/debug/shared/more.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/more.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Scripts/pip.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/pip.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Scripts/pip3.12.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/pip3.12.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Scripts/pip3.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/pip3.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/sqlalchemy/cyextension/processors.cp312-win_amd64.pyd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/processors.cp312-win_amd64.pyd" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Scripts/python.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/python.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Scripts/pythonw.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/pythonw.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/sqlalchemy/cyextension/resultproxy.cp312-win_amd64.pyd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/resultproxy.cp312-win_amd64.pyd" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/select2/select2.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/select2.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/select2/select2-spinner.gif" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/select2-spinner.gif" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/select2/select2x2.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/select2x2.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/leaflet/images/spritesheet.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/spritesheet.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/flask_admin/static/vendor/leaflet/images/spritesheet-2x.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/spritesheet-2x.png" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/greenlet/platform/switch_arm64_masm.obj" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/switch_arm64_masm.obj" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/greenlet/platform/switch_x64_masm.obj" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/switch_x64_masm.obj" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/pip/_vendor/distlib/t32.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/t32.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/pip/_vendor/distlib/t64.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/t64.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/pip/_vendor/distlib/t64-arm.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/t64-arm.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/sqlalchemy/cyextension/util.cp312-win_amd64.pyd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/util.cp312-win_amd64.pyd" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/pip/_vendor/distlib/w32.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/w32.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/pip/_vendor/distlib/w64.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/w64.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/pip/_vendor/distlib/w64-arm.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/w64-arm.exe" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/ar/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/bg/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms1.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/ca/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms2.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/cs_CZ/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms3.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/cy/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms4.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/de/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms5.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/de_CH/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms6.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/el/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms7.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/en/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms8.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/es/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms9.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/et/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms10.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/fa/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms11.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/fi/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms12.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/fr/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms13.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/he/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms14.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/hu/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms15.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/it/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms16.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/ja/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms17.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/kk/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms18.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/ko/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms19.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/nb/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms20.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/nl/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms21.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/pl/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms22.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/pt/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms23.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/ro/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms24.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/ru/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms25.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/sk/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms26.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/sv/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms27.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/tr/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms28.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/uk/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms29.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/zh/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms30.mo" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value=".venv/Lib/site-packages/wtforms/locale/zh_TW/LC_MESSAGES/wtforms.mo" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/변경/wtforms31.mo" />
+  </binary>
+</changelist>
