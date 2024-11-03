@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="/static/flashcards.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title">
+                Create Card
+            </div>
+        </header>
+        <div id="cardsContainer"></div>
+        <button id="savebtn">Save</button>
+    </div>
+    <!-- 모달 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>제목 </h2>
+            <input id="cardTitle" placeholder="제목 입력" required></input><br><br>
+            <button type="submit" id="setting">설정</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='flashcards.js') }}" defer></script>
+</body>
+</html>

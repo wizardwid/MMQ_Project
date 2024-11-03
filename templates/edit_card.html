@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Flashcards</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Flashcards</h1>
+        <div id="editCardsContainer">
+            <!-- 카드 목록이 여기에 표시됩니다. -->
+        </div>        
+        <button id="saveChangesBtn">Save Changes</button>
+
+        <!-- 모달 -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>Edit Title</h2>
+                <input type="text" id="newTitle" placeholder="Enter new title">
+                <button id="saveTitleBtn">Save Title</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='edit_card.js') }}" defer></script>
+</body>
+</html>
