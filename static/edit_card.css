@@ -1,4 +1,11 @@
 @font-face {
+    font-family: 'TTLaundryGothicB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'HakgyoansimDunggeunmisoTTF-B';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
     font-weight: 700;
@@ -6,8 +13,8 @@
 }
 
 @font-face {
-    font-family: 'BMJUA';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -131,7 +138,6 @@ h2{
     font-family: 'HakgyoansimDunggeunmisoTTF-B';
     font-size: 30px;
     position: relative;
-    color: #775a41;
     top: -10%;
 }
 
@@ -142,7 +148,7 @@ h2{
     height: 30px;
     border-radius: 10px;
     border: none;
-    background-color: #d5c1af;
+    background-color: #c5ad96;
     font-size: 20px; /* 입력 글자 크기 */
     padding: 10px; /* 입력 필드 내부 여백 */
     position: relative;
@@ -150,15 +156,15 @@ h2{
 }
 
 #saveTitleBtn{
+    font-size: 17px;
+    font-family: 'TTLaundryGothicB';
     width: 6%; /* 버튼의 너비를 조정 */
     height: 43px;
     margin-right: 8px;
     border-radius: 10px;
     border: none;
-    background-color: #aab082;
-    font-size: 15px;
-    font-family: 'TTLaundryGothicB';
-    color: #f4efeb;
+    background-color: #C0C78C;
+    color: #8A6F55;
     position: fixed;
     top: 56%;
     left: 55%;
@@ -167,7 +173,7 @@ h2{
 input::placeholder{
     font-size: 20px;
     position: relative;
-    top: 5%;
+    top: 8%;
 }
 
 .close {
