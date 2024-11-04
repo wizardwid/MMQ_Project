@@ -1,0 +1,187 @@
+@font-face {
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ghanachoco';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container{
+    width: 1000px;
+    height: 550px;
+    background-color: #FEFAE0;
+    position: absolute;
+    top: 10%;
+    left: 18%;
+}
+
+.title {
+    width: 600px;
+    height: 60px;
+    background-color: #C0C78C;
+    border-radius: 20px;
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    font-size: 230%;
+    color: #8A6F55;
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    left: 20%;
+    display: flex;
+    justify-content: center;  /* 수평 가운데 정렬 */
+    align-items: center;      /* 수직 가운데 정렬 */
+}
+
+#editCardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 카드 사이의 간격 */
+    padding: 20px; /* 컨테이너 내부 여백 */
+    align-items: center; /* 카드들을 가로로 중앙 정렬 */
+    margin-top: 90px; /* 컨테이너를 아래로 이동 */
+    max-height: 400px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 스크롤바를 추가 */
+    padding-right: 20px; /* 스크롤바 여백 추가 */
+}
+
+/* 스크롤바 숨기기 */
+#editCardsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.card-container {
+    width: 40%; /* 너비를 적절히 조정 */
+    background-color: #fffdf3;
+    padding: 15px; /* 카드 내부 여백 */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+
+.card-title {
+    font-family: 'ghanachoco';
+    font-size: large;
+    flex: 1; 
+    cursor: pointer; 
+}
+
+.card-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.edit-icon, .delete-icon {
+    font-size: 20px; /* 아이콘 크기 조정 (기본값보다 약간 크게 설정) */
+    margin-left: 10px; /* 좌측 여백 */
+    cursor: pointer; /* 커서 포인터 */
+}
+
+.delete-icon:hover{
+    color: blue;
+}
+
+.edit-icon:hover{
+    color: red
+}
+
+/* 모달 스타일 */
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); /* 검은 배경 */
+    text-align: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 30%;
+    height: 200px;
+}
+
+h2{
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    font-size: 30px;
+    position: relative;
+    color: #775a41;
+    top: -10%;
+}
+
+#newTitle{
+    font-family: 'GangwonEdu_OTFBoldA';
+    line-height: 5; 
+    width: 70%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: #d5c1af;
+    font-size: 20px; /* 입력 글자 크기 */
+    padding: 10px; /* 입력 필드 내부 여백 */
+    position: relative;
+    top: -5%;
+}
+
+#saveTitleBtn{
+    width: 6%; /* 버튼의 너비를 조정 */
+    height: 43px;
+    margin-right: 8px;
+    border-radius: 10px;
+    border: none;
+    background-color: #aab082;
+    font-size: 15px;
+    font-family: 'TTLaundryGothicB';
+    color: #f4efeb;
+    position: fixed;
+    top: 56%;
+    left: 55%;
+}
+
+input::placeholder{
+    font-size: 20px;
+    position: relative;
+    top: 5%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    top: -5%;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
