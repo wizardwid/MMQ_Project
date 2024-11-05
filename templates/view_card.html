@@ -3,21 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Card</title>
-    <link rel="stylesheet" href="/static/view_card.css">
+    <title>{{ title }}</title>
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="title">
-                View Card - {{ card_title }} <!-- 카드 제목 표시 -->
-            </div>
-        </header>
-        <div id="cardContent"></div>
-        <button id="deleteCardBtn">삭제</button>
-        <button id="saveChangesBtn">저장</button>
+        <h1>{{ title }}</h1>
+        <p>{{ content }}</p>
     </div>
-
-    <script src="{{ url_for('static', filename='view_card.js') }}" defer></script>
 </body>
 </html>

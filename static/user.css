@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'TTLaundryGothicB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.container {
+    width: 1000px;
+    height: 550px;
+    background-color: #FEFAE0;
+    position: absolute;
+    top: 10%;
+    left: 18%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.title {
+    width: 600px;
+    height: 60px;
+    background-color: #C0C78C;
+    border-radius: 20px;
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    font-size: 230%;
+    color: #8A6F55;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-container {
+    width: 800px;
+    padding: 20px;
+    background-color: #FEFAE0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.edit-button {
+    background-color: #8A6F55;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 120%;
+}
+
+.edit-form {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+#logout {
+    font-family: 'BMJUA';
+    color: #525F28;
+    position: absolute;
+    top: 160%;
+    left: 17%;
+    cursor: pointer;
+}
+
+#logout:hover {
+    color: #a8b737; /* 호버 색상 */
+}
