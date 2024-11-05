@@ -1,15 +1,12 @@
 import os
 from flask import send_from_directory
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
-from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 import logging
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
-
-# 데이터베이스 초기화
-db = SQLAlchemy()
+from models import db, User, Flashcard  # models.py에서 임포트
 
 # Flask 애플리케이션 설정
 app = Flask(__name__)
@@ -23,20 +20,6 @@ db.init_app(app)
 # Flask-Admin 설정
 admin = Admin(app, name='MyApp Admin', template_mode='bootstrap3')
 
-# 데이터베이스 모델 정의
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
-
-class Flashcard(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(200), nullable=False)
-    content = db.Column(db.Text, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
-    user = db.relationship('User', backref='flashcards')
-
 # 앱 실행 시 데이터베이스 테이블 생성
 with app.app_context():
     db.create_all()
@@ -45,6 +28,7 @@ with app.app_context():
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Flashcard, db.session))
 
+# 나머지 라우트 및 핸들러 코드는 그대로 유지
 @app.route('/')
 def home():
     if 'user_id' in session:
