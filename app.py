@@ -109,22 +109,23 @@ def login_required(f):
         return f(*args, **kwargs)  # 로그인된 사용자라면 원래 함수 실행
     return decorated_function
 
+@app.route('/get-profile', methods=['GET'])
+def get_profile():
+    # 세션에서 사용자 정보 가져오기 (예시)
+    user_info = {
+        'name': session.get('user_name', 'MMQ'),  # 기본값 제공
+        'email': session.get('user_email', 'MMQ@gmail.com'),  # 기본값 제공
+        'profilePicture': session.get('profile_picture', '/static/default.jpg')  # 기본 이미지 제공
+    }
+    return jsonify(user_info)
+
 @app.route('/update-profile', methods=['POST'])
-@login_required
 def update_profile():
     data = request.get_json()
-    new_name = data.get('name')
-    new_email = data.get('email')
-
-    user = User.query.filter_by(user_id=session['user_id']).first()
-    if user:
-        user.name = new_name  # 사용자 모델에 name 필드가 있어야 합니다
-        user.email = new_email  # 사용자 모델에 email 필드가 있어야 합니다
-        db.session.commit()
-        return jsonify({"success": True, "message": "Profile updated successfully."}), 200
-
-    return jsonify({"success": False, "error": "User not found."}), 404
-
+    session['user_name'] = data.get('name', session.get('user_name'))
+    session['user_email'] = data.get('email', session.get('user_email'))
+    # 프로필 사진 업데이트를 원하실 경우 추가 로직도 여기에 포함할 수 있습니다.
+    return jsonify(success=True)
 
 # 데코레이터 적용 예시
 @app.route('/category')
