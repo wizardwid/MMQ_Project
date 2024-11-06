@@ -60,7 +60,7 @@ function createCard() {
 
     // 추가 버튼 클릭 시 새로운 카드 생성
     cardDiv.querySelector('.addCardButton').addEventListener('click', function() {
-        createCard();
+        createCard(); // 새 카드 추가
     });
 }
 
@@ -78,7 +78,7 @@ saveBtn.addEventListener('click', function() {
         content: card.querySelector('textarea').value
     }));
 
-    console.log("Sending cards:", cards);  // 데이터 출력하여 확인
+    console.log("Sending cards:", cards);  // 데이터 확인용 출력
 
     // 서버에 카드 저장 요청
     fetch('/save_cards', {
@@ -91,6 +91,7 @@ saveBtn.addEventListener('click', function() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
+            alert("카드가 성공적으로 저장되었습니다!");
             window.location.href = '/category'; // 성공 시 카테고리 페이지로 이동
         } else {
             alert("저장 중 문제가 발생했습니다: " + data.error);

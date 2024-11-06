@@ -1,70 +1,142 @@
-const cardContent = document.getElementById('cardContent');
-const deleteCardBtn = document.getElementById('deleteCardBtn');
-const saveChangesBtn = document.getElementById('saveChangesBtn');
+const cardTitleElement = document.getElementById('cardTitle');
+const cardsContainer = document.getElementById('cardsContainer');
+const saveBtn = document.getElementById('savebtn');
 
 // 카드 제목 가져오기
-const urlParams = new URLSearchParams(window.location.search);
-const cardTitle = urlParams.get('title');
+const cardTitle = cardTitleElement.textContent;
 
-// 카드 데이터를 서버에서 불러오기
-window.addEventListener('DOMContentLoaded', () => {
-    fetch(`/get_card?title=${encodeURIComponent(cardTitle)}`)
-        .then(response => response.json())
+if (!cardTitle) {
+    alert("제목이 누락되었습니다.");
+} else {
+    // 초기 카드 표시
+    fetchCardData(); // 제목을 인수로 넘기지 않음
+}
+
+// 카드 데이터 가져오기
+function fetchCardData() {
+    fetch(`/get_cards`)  // 모든 카드를 가져오는 API 호출
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("카드 데이터를 가져오는 데 문제가 발생했습니다: " + response.statusText);
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
-                loadCard(data.card); // 카드 데이터를 화면에 로드
+                cardsContainer.innerHTML = ''; // 기존 카드들 제거하여 중복 방지
+                const cards = data.cards;
+                if (cards.length > 0) {
+                    cards.forEach(card => displayCard(card)); // 모든 카드 개별적으로 표시
+                } else {
+                    alert("카드를 찾을 수 없습니다.");
+                }
             } else {
-                alert("카드를 불러오는 데 문제가 발생했습니다: " + data.error);
+                alert(data.error);
             }
         })
         .catch(error => {
-            console.error("Error:", error);
-            alert("카드를 불러오는 데 문제가 발생했습니다.");
+            console.error(error);
+            alert(error.message);
         });
-});
+}
 
-// 카드 로드 함수
-function loadCard(card) {
-    cardContent.innerHTML = `
-        <textarea placeholder="내용 입력" oninput="autoResize(this)">${card.content}</textarea>
+// 카드 데이터 표시
+function displayCard(card) {
+    const cardDiv = createCardDiv(card.content, card.id);
+    cardsContainer.appendChild(cardDiv);
+}
+
+// 카드 DIV 생성 함수
+function createCardDiv(content, id = "") {
+    const cardDiv = document.createElement('div');
+    cardDiv.className = 'card';
+    cardDiv.dataset.id = id;  // 카드 ID 추가
+
+    cardDiv.innerHTML = `
+        <textarea placeholder="내용 입력" oninput="autoResize(this)" data-original-content="${content}">${content}</textarea>
+        <div class="button-container">
+            <button type="button" class="deleteButton">삭제</button>
+            <button type="button" class="addCardButton">추가</button>
+        </div>
     `;
-}z
 
-// 카드 삭제 기능
-deleteCardBtn.addEventListener('click', () => {
-    fetch(`/delete_card?title=${encodeURIComponent(cardTitle)}`, {
-        method: 'DELETE'
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert("카드가 삭제되었습니다!");
-            window.location.href = '/edit_card'; // 성공 시 카드 편집 페이지로 이동
+    // 삭제 버튼 클릭 시 카드 삭제
+    cardDiv.querySelector('.deleteButton').addEventListener('click', function() {
+        const cardId = cardDiv.dataset.id;
+        if (cardId) {
+            fetch(`/delete_card/${cardId}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("카드가 성공적으로 삭제되었습니다.");
+                    cardDiv.remove(); 
+                } else {
+                    alert("삭제 중 문제가 발생했습니다: " + data.error);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("삭제 중 문제가 발생했습니다.");
+            });
         } else {
-            alert("삭제 중 문제가 발생했습니다: " + data.error);
+            cardDiv.remove(); 
         }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("삭제 중 문제가 발생했습니다.");
     });
-});
 
-// 변경 사항 저장 기능
-saveChangesBtn.addEventListener('click', () => {
-    const content = cardContent.querySelector('textarea').value;
+    // 추가 버튼 클릭 시 새로운 빈 카드 생성
+    cardDiv.querySelector('.addCardButton').addEventListener('click', function() {
+        createCard(); 
+    });
 
-    fetch(`/update_card`, {
+    return cardDiv;
+}
+
+// 빈 카드 추가 함수
+function createCard() {
+    const cardDiv = createCardDiv("");
+    cardsContainer.appendChild(cardDiv); 
+}
+
+// 자동 크기 조정
+function autoResize(input) {
+    input.style.height = 'auto';
+    input.style.height = input.scrollHeight + 'px';
+}
+
+// 저장 버튼 클릭 시 카드 저장
+saveBtn.addEventListener('click', function() {
+    const textareas = cardsContainer.querySelectorAll('textarea');
+    const contents = Array.from(textareas).map(textarea => {
+        const cardDiv = textarea.closest('.card');
+        const cardId = cardDiv.dataset.id || null;
+        return { 
+            id: cardId, 
+            title: cardTitle, 
+            content: textarea.value,
+            originalContent: textarea.dataset.originalContent 
+        }; 
+    });
+
+    // 데이터 저장
+    fetch(`/save_cards`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ title: cardTitle, content: content })
+        body: JSON.stringify({
+            cards: contents.filter(card => 
+                card.content.trim() !== "" && 
+                (card.id === null || card.content !== card.originalContent)  // 변경된 카드만 저장
+            )
+        })
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
             alert("변경 사항이 저장되었습니다!");
+            fetchCardData(); // 저장 후 카드 새로 불러오기
         } else {
             alert("저장 중 문제가 발생했습니다: " + data.error);
         }
