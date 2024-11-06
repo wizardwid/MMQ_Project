@@ -3,18 +3,18 @@ const cardsContainer = document.getElementById('cardsContainer');
 const saveBtn = document.getElementById('savebtn');
 
 // 카드 제목 가져오기
-const cardTitle = cardTitleElement.textContent;
+const cardTitle = cardTitleElement.textContent.trim();
 
 if (!cardTitle) {
     alert("제목이 누락되었습니다.");
 } else {
-    // 초기 카드 표시
-    fetchCardData(); // 제목을 인수로 넘기지 않음
+    // 제목에 맞는 카드 표시
+    fetchCardData(cardTitle);
 }
 
 // 카드 데이터 가져오기
-function fetchCardData() {
-    fetch(`/get_cards`)  // 모든 카드를 가져오는 API 호출
+function fetchCardData(title) {
+    fetch(`/get_cards?title=${encodeURIComponent(title)}`)  // 제목을 URL 쿼리로 전달
         .then(response => {
             if (!response.ok) {
                 throw new Error("카드 데이터를 가져오는 데 문제가 발생했습니다: " + response.statusText);
@@ -26,7 +26,7 @@ function fetchCardData() {
                 cardsContainer.innerHTML = ''; // 기존 카드들 제거하여 중복 방지
                 const cards = data.cards;
                 if (cards.length > 0) {
-                    cards.forEach(card => displayCard(card)); // 모든 카드 개별적으로 표시
+                    cards.forEach(card => displayCard(card)); // 제목에 맞는 카드만 표시
                 } else {
                     alert("카드를 찾을 수 없습니다.");
                 }
@@ -136,7 +136,7 @@ saveBtn.addEventListener('click', function() {
     .then(data => {
         if (data.success) {
             alert("변경 사항이 저장되었습니다!");
-            fetchCardData(); // 저장 후 카드 새로 불러오기
+            fetchCardData(cardTitle); // 저장 후 해당 제목에 맞는 카드만 새로 불러오기
         } else {
             alert("저장 중 문제가 발생했습니다: " + data.error);
         }

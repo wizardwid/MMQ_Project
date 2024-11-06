@@ -70,7 +70,7 @@
 }
 
 .card-container {
-    width: 40%; /* 너비를 적절히 조정 */
+    width: 38%; /* 너비를 적절히 조정 */
     background-color: #fffdf3;
     padding: 15px; /* 카드 내부 여백 */
     border: 1px solid #ddd;
@@ -78,7 +78,6 @@
     display: flex;
     align-items: center;
 }
-
 
 .card-title {
     font-family: 'ghanachoco';
@@ -98,6 +97,8 @@
 .edit-icon, .delete-icon {
     font-size: 20px; /* 아이콘 크기 조정 (기본값보다 약간 크게 설정) */
     margin-left: 10px; /* 좌측 여백 */
+    position: relative;
+    left: 73%;
     cursor: pointer; /* 커서 포인터 */
 }
 
@@ -111,9 +112,9 @@
 
 /* 모달 스타일 */
 .modal {
-    display: none; /* 기본적으로 숨김 */
+    display: none !important;
     position: fixed;
-    z-index: 1;
+    z-index: 10000;
     left: 0;
     top: 0;
     width: 100%;
