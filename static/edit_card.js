@@ -50,8 +50,10 @@ function loadCards(cards) {
         const cardsForThisTitle = groupedCards[title]; // 해당 제목에 속하는 카드들
         cardDiv.innerHTML = `
             <div class="card-title">${title}  
-                <span class="edit-icon" data-id="${cardsForThisTitle[0].id}">&#9998;</span>  <!-- 편집 아이콘 -->
-                <span class="delete-icon" data-title="${title}">&#128465;</span>  <!-- 삭제 아이콘 -->
+                <div class="icon-container">
+                    <span class="edit-icon" data-id="${cardsForThisTitle[0].id}">&#9998;</span>  <!-- 편집 아이콘 -->
+                    <span class="delete-icon" data-title="${title}">&#128465;</span>  <!-- 삭제 아이콘 -->
+                 </div>
             </div>  
             <div class="card-content" style="display: none;">  
                 ${cardsForThisTitle.map(card => ` 
@@ -178,4 +180,3 @@ function deleteCardsByTitle(title, cardDiv) {
         alert("카드 삭제 중 오류가 발생했습니다.");
     });
 }
-

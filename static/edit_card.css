@@ -71,6 +71,7 @@
 
 .card-container {
     width: 38%; /* 너비를 적절히 조정 */
+    height: 20px;
     background-color: #fffdf3;
     padding: 15px; /* 카드 내부 여백 */
     border: 1px solid #ddd;
@@ -80,34 +81,40 @@
 }
 
 .card-title {
+    display: flex;
+    justify-content: space-between;
     font-family: 'ghanachoco';
     font-size: large;
-    flex: 1; 
-    cursor: pointer; 
+    flex: 1;
+    cursor: pointer;
 }
 
 .card-item {
-    display: flex;
-    justify-content: space-between;
     padding: 10px;
     border: 1px solid #ccc;
     margin-bottom: 5px;
 }
 
+.icon-container {
+    display: flex;
+    gap: 10px; /* 아이콘 간 간격 설정 */
+}
+
 .edit-icon, .delete-icon {
-    font-size: 20px; /* 아이콘 크기 조정 (기본값보다 약간 크게 설정) */
-    margin-left: 10px; /* 좌측 여백 */
-    position: relative;
-    left: 75%;
+    font-size: 20px; /* 아이콘 크기 조정 */
     cursor: pointer; /* 커서 포인터 */
 }
 
-.delete-icon:hover{
+.delete-icon{
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+}
+
+.delete-icon:hover {
     color: blue;
 }
 
-.edit-icon:hover{
-    color: red
+.edit-icon:hover {
+    color: red;
 }
 
 /* 모달 스타일 */
