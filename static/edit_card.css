@@ -98,7 +98,7 @@
     font-size: 20px; /* 아이콘 크기 조정 (기본값보다 약간 크게 설정) */
     margin-left: 10px; /* 좌측 여백 */
     position: relative;
-    left: 73%;
+    left: 75%;
     cursor: pointer; /* 커서 포인터 */
 }
 

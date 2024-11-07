@@ -51,7 +51,7 @@ function loadCards(cards) {
         cardDiv.innerHTML = `
             <div class="card-title">${title}  
                 <span class="edit-icon" data-id="${cardsForThisTitle[0].id}">&#9998;</span>  <!-- 편집 아이콘 -->
-                <span class="delete-icon" data-id="${cardsForThisTitle[0].id}">&#128465;</span>  <!-- 삭제 아이콘 -->
+                <span class="delete-icon" data-title="${title}">&#128465;</span>  <!-- 삭제 아이콘 -->
             </div>  
             <div class="card-content" style="display: none;">  
                 ${cardsForThisTitle.map(card => ` 
@@ -84,14 +84,14 @@ function loadCards(cards) {
                 editModal.classList.add('show');  // 'show' 클래스를 추가하여 모달을 표시
                 console.log("모달 열림: ", currentEditingCardId);  // 모달이 열리는지 확인
             }
-        });        
-            
+        });
 
-        // 삭제 아이콘 클릭 시 카드 삭제
+        // 삭제 아이콘 클릭 시 해당 제목에 속한 카드들 삭제
         cardDiv.querySelector('.delete-icon').addEventListener('click', (e) => {
-            e.stopPropagation();  // 제목 클릭 이벤트가 실행되지 않도록 막기
-            const cardId = e.target.dataset.id;
-            deleteCard(cardId, cardDiv);
+            const title = e.target.dataset.title;  // 삭제할 제목을 가져옴
+            if (confirm(`정말로 '${title}' 제목의 카드를 삭제하시겠습니까?`)) {
+                deleteCardsByTitle(title, cardDiv);  // 해당 제목의 카드들 삭제
+            }
         });
     });
 }
@@ -158,25 +158,24 @@ function fetchCards() {
         });
 }
 
-// 카드 삭제 함수
-function deleteCard(cardId, cardDiv) {
-    if (confirm("정말로 이 카드를 삭제하시겠습니까?")) {
-        fetch(`/delete_card/${cardId}`, {  // 카드 ID를 URL에 포함
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert("카드가 삭제되었습니다.");
-                cardDiv.remove();  // DOM에서 해당 카드 삭제
-            } else {
-                alert("카드 삭제에 실패했습니다: " + data.error);
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("카드 삭제 중 오류가 발생했습니다.");
-        });
-    }
+// 제목에 속한 카드들 삭제 함수
+function deleteCardsByTitle(title, cardDiv) {
+    fetch('/delete_cards_by_title', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: title })  // 제목을 전송
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(`'${title}' 제목의 카드들이 삭제되었습니다.`);
+            cardDiv.remove();  // 해당 제목에 속한 카드들을 DOM에서 삭제
+        } else {
+            alert("카드 삭제에 실패했습니다: " + data.error);
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("카드 삭제 중 오류가 발생했습니다.");
+    });
 }

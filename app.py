@@ -192,14 +192,20 @@ def edit_card():
 
 @app.route('/get_cards', methods=['GET'])
 def get_cards():
+    title = request.args.get('title')  # 제목 파라미터를 요청에서 받음
     if 'user_id' in session:
         user = User.query.filter_by(user_id=session['user_id']).first()
-        cards = Flashcard.query.filter_by(user_id=user.id).all()  # 사용자에 해당하는 모든 카드 가져오기
+        if title:
+            # 특정 제목에 해당하는 카드만 가져오기
+            cards = Flashcard.query.filter_by(user_id=user.id, title=title).all()
+        else:
+            # 제목이 주어지지 않으면 모든 카드 가져오기
+            cards = Flashcard.query.filter_by(user_id=user.id).all()
         return jsonify({
             "success": True,
             "cards": [{"id": card.id, "title": card.title, "content": card.content} for card in cards]
         })
-    return jsonify({"success": False, "error": "User not logged in."}), 401  # 로그인되지 않은 경우
+    return jsonify({"success": False, "error": "User not logged in."}), 401
 
 @app.route('/save_updated_titles', methods=['POST'])
 def save_updated_titles():
@@ -222,17 +228,32 @@ def save_updated_titles():
             return jsonify({"success": False, "error": str(e)}), 500  # 제목 저장 중 오류 발생
     return jsonify({"success": False, "error": "User not logged in."}), 401  # 로그인되지 않은 경우
 
-@app.route('/delete_card/<int:card_id>', methods=['DELETE'])
-def delete_card(card_id):
-    if 'user_id' in session:
+@app.route('/delete_cards_by_title', methods=['DELETE'])
+def delete_cards_by_title():
+    try:
+        if 'user_id' not in session:
+            return jsonify({"success": False, "error": "User not logged in."}), 401
+
         user = User.query.filter_by(user_id=session['user_id']).first()
-        card = Flashcard.query.filter_by(id=card_id, user_id=user.id).first()
-        if card:
-            db.session.delete(card)
+        title = request.json.get('title')  # 삭제할 카드의 제목을 받음
+
+        if not title:
+            return jsonify({"success": False, "error": "Title is required."}), 400
+
+        # 해당 제목에 속하는 카드들을 삭제
+        cards = Flashcard.query.filter(Flashcard.title == title, Flashcard.user_id == user.id).all()
+
+        if cards:
+            for card in cards:
+                db.session.delete(card)
             db.session.commit()
-            return jsonify({"success": True, "message": "Card deleted successfully."}), 200
-        return jsonify({"success": False, "error": "Card not found."}), 404
-    return jsonify({"success": False, "error": "User not logged in."}), 401
+            return jsonify({"success": True, "message": f"Cards with title '{title}' deleted successfully."}), 200
+        else:
+            return jsonify({"success": False, "error": "Cards with the given title not found."}), 404
+    except Exception as e:
+        # 예외가 발생한 경우 상세한 오류 메시지 출력
+        print(f"Error while deleting cards: {str(e)}")
+        return jsonify({"success": False, "error": "An error occurred while processing the request."}), 500
 
 @app.route('/favicon.ico')
 def favicon():
