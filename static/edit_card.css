@@ -112,7 +112,7 @@
 
 /* 모달 스타일 */
 .modal {
-    display: none !important;
+    display: none;
     position: fixed;
     z-index: 10000;
     left: 0;
@@ -123,6 +123,10 @@
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4); /* 검은 배경 */
     text-align: center;
+}
+
+.modal.show {
+    display: flex; /* 'show' 클래스가 추가되면 flex로 표시 */
 }
 
 .modal-content {

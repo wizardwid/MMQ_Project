@@ -17,14 +17,14 @@
             <!-- 카드 제목 목록이 여기에 표시 -->
         </div>        
         <!-- 모달 -->
-        <div id="editModal" class="modal" style="display: none;">
+        <div id="editModal" class="modal">
             <div class="modal-content">
                 <span class="close" id="closeModal">&times;</span>
                 <h2>제목 수정</h2>
                 <input type="text" id="newTitle" placeholder="제목 입력">
                 <button id="saveTitleBtn">수정</button>
             </div>
-        </div>        
+        </div>                 
     </div>
     <script src="{{ url_for('static', filename='edit_card.js') }}" defer></script>
 </body>

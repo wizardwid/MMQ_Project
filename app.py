@@ -1,4 +1,5 @@
 import os
+from sqlalchemy import text
 from flask import send_from_directory
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_admin import Admin
@@ -209,24 +210,25 @@ def get_cards():
 
 @app.route('/save_updated_titles', methods=['POST'])
 def save_updated_titles():
-    if 'user_id' in session:
-        data = request.get_json()
-        cards = data.get('cards', [])
+    data = request.get_json()
+    title = data.get('title')  # 기존 제목
+    updated_title = data.get('updatedTitle')  # 새로운 제목
 
-        if not cards:
-            return jsonify({"success": False, "error": "No cards to save."}), 400  # 업데이트할 카드가 없는 경우
+    if not title or not updated_title:
+        return jsonify({'success': False, 'error': '제목이 제공되지 않았습니다.'})
 
-        try:
-            for card_data in cards:
-                card = Flashcard.query.filter_by(id=card_data['id']).first()
-                if card and card.user_id == User.query.filter_by(user_id=session['user_id']).first().id:
-                    card.title = card_data['title']  # 제목만 업데이트
-            db.session.commit()
-            return jsonify({"success": True})
-        except Exception as e:
-            db.session.rollback()
-            return jsonify({"success": False, "error": str(e)}), 500  # 제목 저장 중 오류 발생
-    return jsonify({"success": False, "error": "User not logged in."}), 401  # 로그인되지 않은 경우
+    try:
+        # 제목을 가진 모든 카드의 제목을 업데이트
+        query = text('UPDATE flashcard SET title = :updated_title WHERE title = :title')
+        db.session.execute(query, {'updated_title': updated_title, 'title': title})
+
+        # 데이터베이스에 변경 사항 저장
+        db.session.commit()
+
+        return jsonify({'success': True})
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/delete_cards_by_title', methods=['DELETE'])
 def delete_cards_by_title():

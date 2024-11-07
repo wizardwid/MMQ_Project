@@ -1,11 +1,11 @@
 const editCardsContainer = document.getElementById('editCardsContainer');
-const editModal = document.getElementById('editModal');
+const modal = document.getElementById("editModal");
 const newTitleInput = document.getElementById('newTitle');
 const saveTitleBtn = document.getElementById('saveTitleBtn');
 const closeModal = document.getElementById('closeModal');
 
 let currentEditingCardId = null;
-let currentEditingCardTitle = '';  // 현재 수정 중인 카드의 제목
+let currentEditingCardTitle = null;  // 현재 수정 중인 제목 저장
 let cards = [];  // 현재 페이지에서 사용 중인 카드 데이터
 
 // 카드 데이터 불러오기
@@ -66,9 +66,8 @@ function loadCards(cards) {
 
         // 제목 클릭 시 페이지 이동 (수정 및 삭제와 충돌을 피하기 위해서)
         cardDiv.querySelector('.card-title').addEventListener('click', (e) => {
-            // 클릭된 요소가 수정 또는 삭제 아이콘이 아닌 경우에만 페이지 이동
             if (!e.target.classList.contains('edit-icon') && !e.target.classList.contains('delete-icon')) {
-                const cardId = cardsForThisTitle[0].id;  // 해당 제목에 속하는 첫 번째 카드의 ID
+                const cardId = cardsForThisTitle[0].id;
                 window.location.href = `/flashcard/${cardId}`;  // 해당 카드 ID로 이동
             }
         });
@@ -76,14 +75,11 @@ function loadCards(cards) {
         // 수정 아이콘 클릭 시 모달 열기
         cardDiv.querySelector('.edit-icon').addEventListener('click', (e) => {
             e.stopPropagation();  // 제목 클릭 이벤트가 실행되지 않도록 막기
-            console.log("수정 아이콘 클릭됨:", e.target);
-            currentEditingCardId = e.target.dataset.id;  // 클릭된 카드의 ID 저장
-            const cardToEdit = cardsForThisTitle.find(card => card.id === currentEditingCardId);
-            if (cardToEdit) {
-                newTitleInput.value = cardToEdit.title; // 제목을 모달에 띄움
-                editModal.classList.add('show');  // 'show' 클래스를 추가하여 모달을 표시
-                console.log("모달 열림: ", currentEditingCardId);  // 모달이 열리는지 확인
-            }
+            currentEditingCardId = cardsForThisTitle[0].id; // 첫 번째 카드의 ID로 설정
+            currentEditingCardTitle = title; // 해당 제목을 currentEditingCardTitle에 저장
+            newTitleInput.value = title; // 해당 제목을 모달에 띄움
+            modal.style.display = "block"; // 모달을 표시
+            console.log("모달 열림: ", currentEditingCardId);  // 모달이 열리는지 확인
         });
 
         // 삭제 아이콘 클릭 시 해당 제목에 속한 카드들 삭제
@@ -99,37 +95,37 @@ function loadCards(cards) {
 // 모달 닫기 이벤트
 closeModal.addEventListener('click', () => {
     console.log("모달 닫기 클릭됨");
-    editModal.style.display = 'none';
+    modal.style.display = 'none';  // 수정
     currentEditingCardId = null;
+    currentEditingCardTitle = null;  // 수정 중인 제목 초기화
 });
 
 // 제목 저장 버튼 클릭 이벤트
 saveTitleBtn.addEventListener('click', () => {
     const updatedTitle = newTitleInput.value.trim();
-    if (currentEditingCardId && updatedTitle && updatedTitle !== currentEditingCardTitle) {
+    if (updatedTitle && updatedTitle !== currentEditingCardTitle) {
         fetch('/save_updated_titles', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ cards: [{ id: currentEditingCardId, title: updatedTitle }] })
+            body: JSON.stringify({ title: currentEditingCardTitle, updatedTitle: updatedTitle })
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 // DOM에서 제목을 업데이트하고 모달을 닫음
-                const cardTitle = document.querySelector(`.card-container .card-title[data-title="${currentEditingCardTitle}"]`);
-                if (cardTitle) {
+                const cardTitles = document.querySelectorAll(`.card-container .card-title[data-title="${currentEditingCardTitle}"]`);
+                cardTitles.forEach(cardTitle => {
                     cardTitle.textContent = updatedTitle;  // 제목 수정
-                    cardTitle.innerHTML += ` 
-                        <span class="edit-icon" data-id="${currentEditingCardId}">&#9998;</span>
-                        <span class="delete-icon" data-id="${currentEditingCardId}">&#128465;</span>
-                    `;
-                }
-                editModal.style.display = 'none';
+                    cardTitle.innerHTML = `${updatedTitle}  
+                        <span class="edit-icon" data-id="${cardTitle.dataset.id}">&#9998;</span>
+                        <span class="delete-icon" data-id="${cardTitle.dataset.id}">&#128465;</span>
+                    `; // 기존 아이콘 제거 후 새로 추가
+                });
+                modal.style.display = 'none';  // 모달을 닫음
                 alert("제목이 수정되었습니다.");
-                // 카드를 수정한 후 그룹화된 카드 목록 갱신
-                fetchCards();
+                fetchCards();  // 카드 목록 갱신
             } else {
                 alert("제목 수정에 실패했습니다: " + data.error);
             }
@@ -138,7 +134,9 @@ saveTitleBtn.addEventListener('click', () => {
             console.error("Error:", error);
             alert("제목 수정 중 오류가 발생했습니다.");
         });
-}});
+    }
+});
+
 
 // 카드 목록을 새로 요청하여 갱신
 function fetchCards() {
@@ -170,6 +168,7 @@ function deleteCardsByTitle(title, cardDiv) {
         if (data.success) {
             alert(`'${title}' 제목의 카드들이 삭제되었습니다.`);
             cardDiv.remove();  // 해당 제목에 속한 카드들을 DOM에서 삭제
+            fetchCards();  // 카드 목록을 새로 요청하여 갱신
         } else {
             alert("카드 삭제에 실패했습니다: " + data.error);
         }
@@ -179,3 +178,4 @@ function deleteCardsByTitle(title, cardDiv) {
         alert("카드 삭제 중 오류가 발생했습니다.");
     });
 }
+
