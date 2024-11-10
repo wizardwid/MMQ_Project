@@ -7,7 +7,7 @@ from flask_admin.contrib.sqla import ModelView
 import logging
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
-from models import db, User, Flashcard  # models.py에서 임포트
+from models import db, User, Flashcard, Question  # models.py에서 임포트
 
 # Flask 애플리케이션 설정
 app = Flask(__name__)
@@ -256,6 +256,12 @@ def delete_cards_by_title():
         # 예외가 발생한 경우 상세한 오류 메시지 출력
         print(f"Error while deleting cards: {str(e)}")
         return jsonify({"success": False, "error": "An error occurred while processing the request."}), 500
+
+@app.route('/quiz', methods=['GET'])
+@login_required  # 로그인된 사용자만 접근 가능
+def quiz():
+    questions = Question.query.all()  # 모든 퀴즈 질문 가져오기
+    return render_template('quiz.html', questions=[question.to_dict() for question in questions])  # 질문 데이터를 JSON 형식으로 전달
 
 @app.route('/favicon.ico')
 def favicon():
