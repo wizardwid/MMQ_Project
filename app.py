@@ -176,6 +176,33 @@ def save_cards():
         db.session.rollback()
         return jsonify({"success": False, "error": str(e)}), 500  # 저장 중 오류 발생
 
+@app.route('/delete_card/<int:card_id>', methods=['DELETE'])
+def delete_card(card_id):
+    try:
+        if 'user_id' not in session:
+            return jsonify({"success": False, "error": "User not logged in."}), 401
+
+        user = User.query.filter_by(user_id=session['user_id']).first()
+
+        if not user:
+            return jsonify({"success": False, "error": "User not found."}), 404
+
+        # 해당 카드 ID와 사용자 ID에 해당하는 카드를 찾음
+        card = Flashcard.query.filter_by(id=card_id, user_id=user.id).first()
+
+        if not card:
+            return jsonify({"success": False, "error": "Card not found."}), 404
+
+        db.session.delete(card)
+        db.session.commit()
+
+        return jsonify({"success": True, "message": "Card deleted successfully."}), 200
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
 @app.route('/flashcard/<int:card_id>')
 def flashcard_view(card_id):
     if 'user_id' in session:
@@ -260,32 +287,37 @@ def delete_cards_by_title():
 
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
-    if 'user_id' in session:
-        if request.method == 'POST':
-            try:
-                # 클라이언트에서 보낸 JSON 데이터 받기
-                data = request.get_json()
-                title = data.get('title')
-                questions = data.get('questions')
+    if 'user_id' not in session:
+        return redirect(url_for('login'))  # 로그인되지 않은 경우 로그인 페이지로 리다이렉트
 
-                if not questions:
-                    return jsonify({"success": False, "error": "Questions are required"}), 400
+    user = User.query.filter_by(user_id=session['user_id']).first()
+    if not user:
+        return jsonify({"success": False, "error": "User not found"}), 404  # 사용자가 없는 경우
 
-                user = User.query.filter_by(user_id=session['user_id']).first()
-                if user:
-                    new_quiz = Quiz(title=title, questions=questions, user_id=user.id)
-                    db.session.add(new_quiz)
-                    db.session.commit()
-                    return jsonify({"success": True, "message": "Quiz saved successfully"}), 200
-                else:
-                    return jsonify({"success": False, "error": "User not found"}), 404
-            except Exception as e:
-                return jsonify({"success": False, "error": str(e)}), 500
-        else:
-            # GET 요청 시 퀴즈 목록 가져오기
-            quizzes = Quiz.query.filter_by(user_id=session['user_id']).all()
-            return render_template('quiz.html', quizzes=quizzes)
-    return redirect(url_for('login'))  # 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+    if request.method == 'POST':
+        try:
+            data = request.get_json()
+            title = data.get('title')
+            questions = data.get('questions')
+
+            if not questions:
+                return jsonify({"success": False, "error": "Questions are required"}), 400
+
+            if not user.id:
+                return jsonify({"success": False, "error": "User ID is missing"}), 400
+
+            # Quiz 생성 및 저장
+            new_quiz = Quiz(title=title, questions=questions, user_id=user.id)
+            db.session.add(new_quiz)
+            db.session.commit()
+
+            return jsonify({"success": True, "message": "Quiz saved successfully"}), 200
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({"success": False, "error": str(e)}), 500
+    else:
+        quizzes = Quiz.query.filter_by(user_id=user.id).all()
+        return render_template('quiz.html', quizzes=quizzes)
 
 @app.route('/create_quiz', methods=['POST'])
 def create_quiz():

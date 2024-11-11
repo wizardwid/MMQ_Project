@@ -55,7 +55,27 @@ function createCard() {
 
     // 삭제 버튼 클릭 시 카드 삭제
     cardDiv.querySelector('.deleteButton').addEventListener('click', function() {
-        cardDiv.remove();
+        const cardId = cardDiv.dataset.id;
+        if (cardId) {
+            fetch(`/delete_card/${cardId}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("카드가 성공적으로 삭제되었습니다.");
+                    cardDiv.remove(); 
+                } else {
+                    alert("삭제 중 문제가 발생했습니다: " + data.error);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("삭제 중 문제가 발생했습니다.");
+            });
+        } else {
+            cardDiv.remove(); 
+        }
     });
 
     // 추가 버튼 클릭 시 새로운 카드 생성

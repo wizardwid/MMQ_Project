@@ -44,8 +44,8 @@ function createQuiz() {
     
     // 퀴즈 내용 구성
     quizDiv.innerHTML = `
-        <input type="text" name="question" placeholder="질문 입력" required>
-        <input type="text" name="answer" placeholder="답변 입력" required>
+        <input type="text" name="question" class="question" placeholder="질문 입력" required></br>
+        <input type="text" name="answer" class="answer" placeholder="답변 입력" required>
         <div class="button-container">
             <button type="button" class="deleteButton">삭제</button>
             <button type="button" class="addQuizButton">추가</button>

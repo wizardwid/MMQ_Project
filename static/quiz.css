@@ -88,7 +88,7 @@ h2{
     top: -10%;
 }
 
-#cardTitle{
+#quizTitle{
     font-family: 'GangwonEdu_OTFBoldA';
     line-height: 5; 
     width: 70%;
@@ -138,7 +138,7 @@ input::placeholder{
 }
 
 /* 카드 컨테이너 스타일 */
-#cardsContainer {
+#quizContainer {
     display: flex; /* Flexbox를 사용하여 카드 정렬 */
     flex-direction: column; /* 세로 방향으로 정렬 */
     align-items: center; /* 수평 가운데 정렬 */
@@ -149,11 +149,11 @@ input::placeholder{
 }
 
 /* 스크롤바 숨기기 */
-#cardsContainer::-webkit-scrollbar {
+#quizContainer::-webkit-scrollbar {
     display: none;
 }
 
-.card {
+.quiz {
     margin-top: 3px;
     margin-bottom: 10px; /* 카드 간의 간격 조정 */
     width: calc(100% - 20px); /* 카드 너비 조정 */
@@ -200,7 +200,7 @@ input::placeholder{
     left: 25%;
 }
 
-.deleteButton, .addCardButton {
+.deleteButton, .addQuizButton {
     width: 7%; /* 버튼의 너비를 조정 */
     height: 35px;
     margin-right: 8px;
