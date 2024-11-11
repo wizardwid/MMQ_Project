@@ -41,10 +41,10 @@
 .box{
     background-color: #fff;
     position: absolute;
-    top: 30%;
+    top: 27%;
     left: 32%;
     width: 35%;
-    height: 270px;
+    height: 320px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -66,6 +66,11 @@
     top: 5%;
     left: 88%;
     transform: rotate(37deg);
+}
+
+ul{
+    justify-content: center;
+    align-items: center;
 }
 
 li {
