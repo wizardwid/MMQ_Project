@@ -16,20 +16,10 @@ class Flashcard(db.Model):
 
     user = db.relationship('User', backref='flashcards')
 
-class Question(db.Model):
-    __tablename__ = 'questions'
+class Quiz(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    question_text = db.Column(db.String, nullable=False)
-    choice_1 = db.Column(db.String, nullable=False)
-    choice_2 = db.Column(db.String, nullable=False)
-    choice_3 = db.Column(db.String, nullable=False)
-    choice_4 = db.Column(db.String, nullable=False)
-    correct_answer = db.Column(db.String, nullable=False)
+    title = db.Column(db.String(200), nullable=False)
+    questions = db.Column(db.JSON, nullable=False)  # JSON 필드로 질문과 답변 저장
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'question_text': self.question_text,
-            'choices': [self.choice_1, self.choice_2, self.choice_3, self.choice_4],
-            'correct_answer': self.correct_answer
-        }
+    user = db.relationship('User', backref='quizzes')

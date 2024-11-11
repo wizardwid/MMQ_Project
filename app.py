@@ -7,7 +7,7 @@ from flask_admin.contrib.sqla import ModelView
 import logging
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
-from models import db, User, Flashcard, Question  # models.py에서 임포트
+from models import db, User, Flashcard, Quiz  # models.py에서 임포트
 
 # Flask 애플리케이션 설정
 app = Flask(__name__)
@@ -28,6 +28,7 @@ with app.app_context():
 # Admin 뷰 등록
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Flashcard, db.session))
+admin.add_view(ModelView(Quiz, db.session))
 
 # 나머지 라우트 및 핸들러 코드는 그대로 유지
 @app.route('/')
@@ -257,11 +258,85 @@ def delete_cards_by_title():
         print(f"Error while deleting cards: {str(e)}")
         return jsonify({"success": False, "error": "An error occurred while processing the request."}), 500
 
-@app.route('/quiz', methods=['GET'])
-@login_required  # 로그인된 사용자만 접근 가능
+@app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
-    questions = Question.query.all()  # 모든 퀴즈 질문 가져오기
-    return render_template('quiz.html', questions=[question.to_dict() for question in questions])  # 질문 데이터를 JSON 형식으로 전달
+    if 'user_id' in session:
+        if request.method == 'POST':
+            try:
+                # 클라이언트에서 보낸 JSON 데이터 받기
+                data = request.get_json()
+                title = data.get('title')
+                questions = data.get('questions')
+
+                if not questions:
+                    return jsonify({"success": False, "error": "Questions are required"}), 400
+
+                user = User.query.filter_by(user_id=session['user_id']).first()
+                if user:
+                    new_quiz = Quiz(title=title, questions=questions, user_id=user.id)
+                    db.session.add(new_quiz)
+                    db.session.commit()
+                    return jsonify({"success": True, "message": "Quiz saved successfully"}), 200
+                else:
+                    return jsonify({"success": False, "error": "User not found"}), 404
+            except Exception as e:
+                return jsonify({"success": False, "error": str(e)}), 500
+        else:
+            # GET 요청 시 퀴즈 목록 가져오기
+            quizzes = Quiz.query.filter_by(user_id=session['user_id']).all()
+            return render_template('quiz.html', quizzes=quizzes)
+    return redirect(url_for('login'))  # 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+
+@app.route('/create_quiz', methods=['POST'])
+def create_quiz():
+    if 'user_id' in session:
+        # 클라이언트에서 JSON 데이터를 받음
+        data = request.get_json()
+
+        title = data.get('title')
+        questions = data.get('questions')  # 클라이언트에서 전달된 퀴즈 질문들
+
+        if not questions:
+            return jsonify({"success": False, "error": "No questions provided."}), 400
+
+        user = User.query.filter_by(user_id=session['user_id']).first()
+
+        if user:
+            new_quiz = Quiz(title=title, questions=questions, user_id=user.id)
+            db.session.add(new_quiz)
+            db.session.commit()
+
+            return jsonify({"success": True, "message": "Quiz created successfully."}), 201  # 퀴즈 생성 성공
+        else:
+            return jsonify({"success": False, "error": "User not logged in."}), 401  # 로그인되지 않은 경우
+    return jsonify({"success": False, "error": "User not logged in."}), 401  # 로그인되지 않은 경우
+
+@app.route('/save_quiz', methods=['POST'])
+def save_quiz():
+    data = request.get_json()  # POST 요청의 JSON 데이터를 받음
+    quizzes = data.get('quizzes', [])
+
+    if not quizzes:
+        return jsonify({"success": False, "error": "No quizzes to save."}), 400  # 저장할 퀴즈가 없는 경우
+
+    # 사용자 정보 확인
+    user = User.query.filter_by(user_id=session.get('user_id')).first()
+    if user is None:
+        return jsonify({"success": False, "error": "User not found."}), 404  # 사용자가 존재하지 않는 경우
+
+    try:
+        for quiz in quizzes:
+            new_quiz = Quiz(
+                title=quiz['title'],
+                questions=quiz['questions'],
+                user_id=user.id  # user는 이미 존재합니다
+            )
+            db.session.add(new_quiz)
+        db.session.commit()
+        return jsonify({"success": True})
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"success": False, "error": str(e)}), 500  # 저장 중 오류 발생
 
 @app.route('/favicon.ico')
 def favicon():
