@@ -41,10 +41,10 @@
 .box{
     background-color: #fff;
     position: absolute;
-    top: 27%;
+    top: 30%;
     left: 32%;
     width: 35%;
-    height: 320px;
+    height: 280px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 

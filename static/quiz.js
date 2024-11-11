@@ -108,7 +108,7 @@ saveBtn.addEventListener('click', function() {
     .then(data => {
         if (data.success) {
             alert("퀴즈가 성공적으로 저장되었습니다!");
-            window.location.href = '/quiz'; // 성공 시 퀴즈 페이지로 이동
+            window.location.href = '/category'; // 성공 시 퀴즈 페이지로 이동
         } else {
             alert("저장 중 문제가 발생했습니다: " + data.error);
         }

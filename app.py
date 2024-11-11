@@ -343,32 +343,147 @@ def create_quiz():
             return jsonify({"success": False, "error": "User not logged in."}), 401  # 로그인되지 않은 경우
     return jsonify({"success": False, "error": "User not logged in."}), 401  # 로그인되지 않은 경우
 
-@app.route('/save_quiz', methods=['POST'])
+@app.route('/save_quiz', methods=['POST'])  # URL도 변경
 def save_quiz():
-    data = request.get_json()  # POST 요청의 JSON 데이터를 받음
-    quizzes = data.get('quizzes', [])
-
-    if not quizzes:
-        return jsonify({"success": False, "error": "No quizzes to save."}), 400  # 저장할 퀴즈가 없는 경우
-
-    # 사용자 정보 확인
-    user = User.query.filter_by(user_id=session.get('user_id')).first()
-    if user is None:
-        return jsonify({"success": False, "error": "User not found."}), 404  # 사용자가 존재하지 않는 경우
-
-    try:
-        for quiz in quizzes:
-            new_quiz = Quiz(
-                title=quiz['title'],
-                questions=quiz['questions'],
-                user_id=user.id  # user는 이미 존재합니다
-            )
-            db.session.add(new_quiz)
+    if 'user_id' in session:
+        user = User.query.filter_by(user_id=session['user_id']).first()
+        quizzes_data = request.json.get('quizzes')  # 클라이언트에서 전달받은 퀴즈들
+        for quiz_data in quizzes_data:
+            quiz = Quiz.query.filter_by(id=quiz_data['id'], user_id=user.id).first()
+            if quiz:
+                # 기존 퀴즈 업데이트
+                quiz.title = quiz_data['title']
+                quiz.questions = [{
+                    "question": quiz_data['question'],
+                    "answer": quiz_data['answer']
+                }]
+            else:
+                # 새 퀴즈 추가
+                new_quiz = Quiz(
+                    title=quiz_data['title'],
+                    questions=[{"question": quiz_data['question'], "answer": quiz_data['answer']}],
+                    user_id=user.id
+                )
+                db.session.add(new_quiz)
         db.session.commit()
         return jsonify({"success": True})
+    return jsonify({"success": False, "error": "로그인 필요"})
+
+@app.route('/delete_quiz/<int:quiz_id>', methods=['DELETE'])
+def delete_quiz(quiz_id):
+    try:
+        if 'user_id' not in session:
+            return jsonify({"success": False, "error": "User not logged in."}), 401
+
+        user = User.query.filter_by(user_id=session['user_id']).first()
+
+        if not user:
+            return jsonify({"success": False, "error": "User not found."}), 404
+
+        # 해당 퀴즈 ID와 사용자 ID에 해당하는 퀴즈를 찾음
+        quiz = Quiz.query.filter_by(id=quiz_id, user_id=user.id).first()
+
+        if not quiz:
+            return jsonify({"success": False, "error": "Quiz not found."}), 404
+
+        db.session.delete(quiz)
+        db.session.commit()
+
+        return jsonify({"success": True, "message": "Quiz deleted successfully."}), 200
+
     except Exception as e:
         db.session.rollback()
-        return jsonify({"success": False, "error": str(e)}), 500  # 저장 중 오류 발생
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route('/quiz/<int:quiz_id>')
+def quiz_view(quiz_id):
+    if 'user_id' in session:
+        user = User.query.filter_by(user_id=session['user_id']).first()
+        quiz = Quiz.query.filter_by(id=quiz_id, user_id=user.id).first()
+        if quiz:
+            return render_template('view_quiz.html', title=quiz.title, questions=quiz.questions)  # 퀴즈 내용 렌더링
+        return "Quiz not found", 404  # 퀴즈가 없는 경우
+    return redirect(url_for('login'))  # 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+
+
+@app.route('/edit_quiz')
+def edit_quiz():
+    if 'user_id' in session:
+        return render_template('edit_quiz.html')  # 퀴즈 수정 페이지 렌더링
+    return redirect(url_for('login'))  # 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+
+@app.route('/get_quizzes', methods=['GET'])
+def get_quizzes():
+    title = request.args.get('title')  # 제목 파라미터를 요청에서 받음
+    if 'user_id' in session:
+        user = User.query.filter_by(user_id=session['user_id']).first()
+        if title:
+            # 특정 제목에 해당하는 퀴즈만 가져오기
+            quizzes = Quiz.query.filter_by(user_id=user.id, title=title).all()
+        else:
+            # 제목이 주어지지 않으면 모든 퀴즈 가져오기
+            quizzes = Quiz.query.filter_by(user_id=user.id).all()
+
+        # 가져온 퀴즈 목록을 JSON 형식으로 반환
+        return jsonify({
+            "success": True,
+            "quizzes": [{
+                "id": quiz.id,
+                "title": quiz.title,
+                "questions": quiz.questions  # questions는 리스트 형태
+            } for quiz in quizzes]
+        })
+    return jsonify({"success": False, "error": "로그인 필요"})
+
+@app.route('/save_updated_titles_quiz', methods=['POST'])
+def save_updated_titles_quiz():
+    data = request.get_json()
+    title = data.get('title')  # 기존 제목
+    updated_title = data.get('updatedTitle')  # 새로운 제목
+
+    if not title or not updated_title:
+        return jsonify({'success': False, 'error': '제목이 제공되지 않았습니다.'})
+
+    try:
+        # 제목을 가진 모든 퀴즈의 제목을 업데이트
+        query = text('UPDATE quiz SET title = :updated_title WHERE title = :title')
+        db.session.execute(query, {'updated_title': updated_title, 'title': title})
+
+        # 데이터베이스에 변경 사항 저장
+        db.session.commit()
+
+        return jsonify({'success': True})
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/delete_quizzes_by_title', methods=['DELETE'])
+def delete_quizzes_by_title():
+    try:
+        if 'user_id' not in session:
+            return jsonify({"success": False, "error": "User not logged in."}), 401
+
+        user = User.query.filter_by(user_id=session['user_id']).first()
+        title = request.json.get('title')  # 삭제할 퀴즈의 제목을 받음
+
+        if not title:
+            return jsonify({"success": False, "error": "Title is required."}), 400
+
+        # 해당 제목에 속하는 퀴즈들을 삭제
+        quizzes = Quiz.query.filter(Quiz.title == title, Quiz.user_id == user.id).all()
+
+        if quizzes:
+            for quiz in quizzes:
+                db.session.delete(quiz)
+            db.session.commit()
+            return jsonify({"success": True, "message": f"Quizzes with title '{title}' deleted successfully."}), 200
+        else:
+            return jsonify({"success": False, "error": "Quizzes with the given title not found."}), 404
+    except Exception as e:
+        # 예외가 발생한 경우 상세한 오류 메시지 출력
+        print(f"Error while deleting quizzes: {str(e)}")
+        return jsonify({"success": False, "error": "An error occurred while processing the request."}), 500
 
 @app.route('/favicon.ico')
 def favicon():

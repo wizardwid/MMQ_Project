@@ -9,9 +9,11 @@
 <body>
     <div class="container">
         <header>
-            <div class="title" id="cardTitle">{{ title }}</div>
+            <div class="title" id="quizTitle">{{ title }}</div>
         </header>
-        <div id="cardsContainer">{{ content }}</div>
+        <div id="quizContainer">
+            <!-- 퀴즈 질문과 답변 표시 영역 -->
+        </div>
         <button id="savebtn">Save</button>
     </div>
     <script src="{{ url_for('static', filename='view_quiz.js') }}" defer></script>

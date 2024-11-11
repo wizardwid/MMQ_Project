@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Quiz</title>
+    <link rel="stylesheet" href="/static/edit_quiz.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title">Quiz List</div>
+        </header>
+        <div id="editQuizzesContainer">
+            <!-- 퀴즈 제목 목록이 여기에 표시 -->
+        </div>        
+        <!-- 모달 -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>제목 수정</h2>
+                <input type="text" id="newTitle" placeholder="제목 입력">
+                <button id="saveTitleBtn">수정</button>
+            </div>
+        </div>                 
+    </div>
+    <script src="{{ url_for('static', filename='edit_quiz.js') }}" defer></script>
+</body>
+</html>
