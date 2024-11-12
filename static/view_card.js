@@ -1,6 +1,7 @@
 const cardTitleElement = document.getElementById('cardTitle');
 const cardsContainer = document.getElementById('cardsContainer');
 const saveBtn = document.getElementById('savebtn');
+const playBtn = document.getElementById('playbtn');
 const modal = document.getElementById("confirmationModal");
 const playButton = document.getElementById("confirmPlay");
 const editButton = document.getElementById("cancelPlay");
@@ -105,7 +106,6 @@ function createCard() {
 
 // 저장 버튼 클릭 시 카드 저장
 saveBtn.addEventListener('click', function() {
-    modal.style.display = "block";  // 먼저 모달을 띄운다
 
     // 카드 내용 확인
     const textareas = cardsContainer.querySelectorAll('textarea');
@@ -151,6 +151,16 @@ saveBtn.addEventListener('click', function() {
         });
     } else {
         alert("변경 사항이 없습니다.");  // 변경된 카드가 없을 경우 알림
+    }
+});
+
+// 플레이 버튼 클릭 시 모달 띄우기
+playBtn.addEventListener('click', function() {
+    const quizTitle = quizTitleElement ? quizTitleElement.textContent.trim() : '';  // 제목을 직접 가져옵니다
+    if (quizTitle) {
+        modal.style.display = "block";  // 모달 띄우기
+    } else {
+        alert("퀴즈 제목을 찾을 수 없습니다.");
     }
 });
 

@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                                 const answerInput = document.createElement('input');
                                 answerInput.classList.add('answerInput');
-                                answerInput.placeholder = "답을 입력하세요...";
+                                answerInput.placeholder = "답을 입력하세요";
 
                                 const submitAnswerBtn = document.createElement('button');
                                 submitAnswerBtn.classList.add('submitAnswerBtn');
@@ -45,16 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                 const feedback = document.createElement('p');
                                 feedback.classList.add('feedback');
 
-                                const nextQuestionBtn = document.createElement('button');
-                                nextQuestionBtn.classList.add('nextQuestionBtn');
-                                nextQuestionBtn.textContent = "다음 질문";
-                                nextQuestionBtn.style.display = 'none';  // 처음엔 보이지 않음
-
                                 newQuestionContainer.appendChild(questionText);
                                 newQuestionContainer.appendChild(answerInput);
                                 newQuestionContainer.appendChild(submitAnswerBtn);
                                 newQuestionContainer.appendChild(feedback);
-                                newQuestionContainer.appendChild(nextQuestionBtn);
 
                                 questionContainer.appendChild(newQuestionContainer);
 
@@ -65,17 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
                                     if (userAnswer === correctAnswer) {
                                         feedback.textContent = '정답입니다!';
-                                        nextQuestionBtn.style.display = 'inline-block';  // 정답 시 "다음 질문" 버튼 보이기
-                                        submitAnswerBtn.style.display = 'none';  // "답 제출" 버튼 숨기기
+                                        // 정답 시 자동으로 다음 질문으로 넘어감
+                                        currentQuestionIndex++;  // 인덱스 증가
+                                        setTimeout(renderQuestion, 1000);  // 1초 후에 다음 질문 렌더링
                                     } else {
                                         feedback.textContent = '틀렸습니다. 다시 시도하세요.';
                                     }
-                                });
-
-                                // "다음 질문" 버튼 클릭 시
-                                nextQuestionBtn.addEventListener('click', function() {
-                                    currentQuestionIndex++;  // 인덱스 증가
-                                    renderQuestion();  // 새로운 질문 렌더링
                                 });
                             } else {
                                 // 질문이 모두 끝났을 경우, 다음 퀴즈로 넘어가기
@@ -84,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     displayQuiz(quizzes[currentQuizIndex]);  // 다음 퀴즈 렌더링
                                 } else {
                                     alert("모든 퀴즈를 완료했습니다.");
+                                    window.location.href = "/edit_quiz";
                                 }
                             }
                         }

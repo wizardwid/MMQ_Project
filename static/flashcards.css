@@ -215,3 +215,8 @@ textarea::placeholder {
     top: 80%;
     left: 76%;
 }
+
+#savebtn:hover{
+    background-color: #626B46;
+    color: #e4d1c0;
+}

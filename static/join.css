@@ -78,3 +78,8 @@ button{
     font-family: 'TTLaundryGothicB';
     color: #8A6F55;
 }
+
+button:hover{
+    background-color: #8A6F55;
+    color: #C0C78C;
+}

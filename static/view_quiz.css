@@ -143,7 +143,27 @@ body::-webkit-scrollbar {
     color: #626B46;
     position: fixed;
     top: 80%;
+    left: 69%;
+}
+
+#playbtn{
+    width: 6%; /* 버튼의 너비를 조정 */
+    height: 43px;
+    margin-right: 8px;
+    border-radius: 10px;
+    border: none;
+    background-color: #e4d1c0;
+    font-size: 15px;
+    font-family: 'TTLaundryGothicB';
+    color: #626B46;
+    position: fixed;
+    top: 80%;
     left: 76%;
+}
+
+#savebtn:hover, #playbtn:hover{
+    background-color: #626B46;
+    color: #e4d1c0;
 }
 
 /* 모달 스타일 */

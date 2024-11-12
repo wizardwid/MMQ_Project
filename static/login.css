@@ -79,6 +79,11 @@ button{
     color: #8A6F55;
 }
 
+button:hover{
+    background-color: #8A6F55;
+    color: #C0C78C;
+}
+
 a {
     font-family: 'BMJUA';
     text-decoration: none;       /* 링크 밑줄 없애기 */
