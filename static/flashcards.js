@@ -84,12 +84,6 @@ function createCard() {
     });
 }
 
-// 입력 필드 자동 크기 조정
-function autoResize(input) {
-    input.style.height = 'auto'; // 초기화
-    input.style.height = input.scrollHeight + 'px'; // 입력 내용에 맞게 높이 조정
-}
-
 // flashcards.js의 saveBtn 이벤트
 saveBtn.addEventListener('click', function() {
     // 카드 내용 수집

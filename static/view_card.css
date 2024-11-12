@@ -82,11 +82,12 @@ body::-webkit-scrollbar {
 
 .card textarea {
     font-family: 'GangwonEdu_OTFBoldA';
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
     width: 40%; /* 카드 너비에 맞게 설정 */
     height: 200px;
     padding: 8px;
+    padding-top: 75px; /* 텍스트를 수직 중앙에 배치하기 위한 패딩 설정 */
     box-sizing: border-box; /* 패딩 포함해서 너비 조정 */
     border-radius: 10px;
     border: none;
@@ -94,6 +95,10 @@ body::-webkit-scrollbar {
     overflow: hidden; /* 스크롤바 숨기기 */
     resize: none; /* 사용자가 크기를 조정할 수 없도록 설정 */
     margin-bottom: 10px; /* 버튼과의 간격 조정 */
+}
+
+textarea::placeholder {
+    font-size: 23px;
 }
 
 .button-container {

@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'TTLaundryGothicB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimDunggeunmisoTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ghanachoco';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+
+.container{
+    width: 1000px;
+    height: 550px;
+    background-color: #FEFAE0;
+    position: absolute;
+    top: 10%;
+    left: 18%;
+}
+
+.title {
+    width: 600px;
+    height: 60px;
+    background-color: #C0C78C;
+    border-radius: 20px;
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    font-size: 230%;
+    color: #8A6F55;
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    left: 20%;
+    display: flex;
+    justify-content: center;  /* 수평 가운데 정렬 */
+    align-items: center;      /* 수직 가운데 정렬 */
+}
+
+.flashcard-text {
+    font-family: 'GangwonEdu_OTFBoldA';
+    font-size: 40px;
+    text-align: center; /* 수평 가운데 정렬 */
+    width: 40%; /* 카드 너비에 맞게 설정 */
+    height: 200px;
+    padding: 8px;
+    padding-top: 75px; /* 텍스트를 수직 중앙에 배치하기 위한 패딩 설정 */
+    box-sizing: border-box; /* 패딩 포함해서 너비 조정 */
+    border-radius: 10px;
+    border: none;
+    background-color: #E2E7BD;
+    overflow: hidden; /* 스크롤바 숨기기 */
+    resize: none; /* 사용자가 크기를 조정할 수 없도록 설정 */
+    margin-bottom: 10px; /* 버튼과의 간격 조정 */
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
+
+#prevCard{
+    font-size: 50px;
+    position: absolute;
+    top: 45%;
+    left: 15%;
+}
+
+#nextCard{
+    font-size: 50px;
+    position: absolute;
+    top: 45%;
+    left: 80%;
+}
+
+#prevCard:hover, #nextCard:hover{
+    color: #C0C78C;
+}
+

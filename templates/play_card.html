@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title> <!-- title을 표시 -->
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/play_card.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="flashcard-container">
-        <div id="flashcardTitle" class="flashcard-title">{{ title }}</div> <!-- 카드 제목을 표시 -->
-        <div id="flashcardText" class="flashcard-text">{{ card.content }}</div> <!-- 카드 내용을 표시 -->
+    <div class="container">
+        <div class="flashcard-container">
+            <header>
+                <div class="title">
+                    <div id="flashcardTitle" class="flashcard-title">{{ title }}</div>  <!-- 카드 제목을 표시 -->
+                </div>
+            </header>
 
-        <div class="navigation-icons">
-            <i id="prevCard" class="fas fa-arrow-left" title="이전 카드"></i>
-            <i id="nextCard" class="fas fa-arrow-right" title="다음 카드"></i>
+            <textarea id="flashcardText" class="flashcard-text">{{ card.content }}</textarea>
+
+            <div class="navigation-icons">
+                <i id="prevCard" class="fas fa-arrow-left" title="이전 카드"></i> <!-- 왼쪽 화살표 -->
+                <i id="nextCard" class="fas fa-arrow-right" title="다음 카드"></i> <!-- 오른쪽 화살표 -->
+            </div>
         </div>
     </div>
-    
     <script src="{{ url_for('static', filename='play_card.js') }}" defer></script>
 </body>
 </html>

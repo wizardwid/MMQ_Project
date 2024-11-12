@@ -49,7 +49,7 @@ function loadCard() {
     
     const card = flashcardData[currentCardIndex];
     if (card) {
-        flashcardTitle.innerHTML = `카드 제목: ${card.title || "제목 없음"}`;  // 카드 제목을 표시
+        flashcardTitle.innerHTML = `${card.title || "제목 없음"}`;  // 카드 제목을 표시
         flashcardText.textContent = card.content || "내용이 없습니다.";  // 카드 내용을 표시
     } else {
         console.error(`Card at index ${currentCardIndex} not found.`);

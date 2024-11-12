@@ -103,12 +103,6 @@ function createCard() {
     cardsContainer.appendChild(cardDiv); 
 }
 
-// 자동 크기 조정
-function autoResize(input) {
-    input.style.height = 'auto';
-    input.style.height = input.scrollHeight + 'px';
-}
-
 // 저장 버튼 클릭 시 카드 저장
 saveBtn.addEventListener('click', function() {
     modal.style.display = "block";  // 먼저 모달을 띄운다
@@ -162,13 +156,18 @@ saveBtn.addEventListener('click', function() {
 
 // '예' 버튼 클릭 시 play_card.html로 이동
 playButton.addEventListener('click', function() {
-    window.location.href = "/play_card/{{ card.id }}";  // card.id에 맞는 URL로 이동
-    modal.style.display = "none";  // 모달 닫기
+    const cardTitle = cardTitleElement ? cardTitleElement.textContent.trim() : '';  // 제목을 직접 가져옵니다
+    if (cardTitle) {
+        window.location.href = `/play_card/${encodeURIComponent(cardTitle)}`;  // 제목을 URL 파라미터로 추가
+        modal.style.display = "none";  // 모달 닫기
+    } else {
+        alert("퀴즈 제목을 찾을 수 없습니다.");
+    }
 });
 
 // '아니오' 버튼 클릭 시 모달 닫기
 editButton.addEventListener('click', function() {
-    window.location.href = "/edit_quiz";
+    window.location.href = "/edit_card";
     modal.style.display = "none";  // 모달 닫기
 });
 
