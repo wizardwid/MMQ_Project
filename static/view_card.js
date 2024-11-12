@@ -111,6 +111,8 @@ function autoResize(input) {
 
 // 저장 버튼 클릭 시 카드 저장
 saveBtn.addEventListener('click', function() {
+    modal.style.display = "block";  // 먼저 모달을 띄운다
+
     // 카드 내용 확인
     const textareas = cardsContainer.querySelectorAll('textarea');
     const contents = Array.from(textareas).map(textarea => {
@@ -130,9 +132,6 @@ saveBtn.addEventListener('click', function() {
     );
 
     if (modifiedCards.length > 0) {
-        // 변경된 카드가 있으면 모달 띄우기
-        modal.style.display = "block";  // 먼저 모달을 띄운다
-
         // 데이터 저장
         fetch(`/save_cards`, {
             method: 'POST',

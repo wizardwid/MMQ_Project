@@ -285,6 +285,30 @@ def delete_cards_by_title():
         print(f"Error while deleting cards: {str(e)}")
         return jsonify({"success": False, "error": "An error occurred while processing the request."}), 500
 
+
+@app.route('/play_card/<title>', methods=['GET'])
+def play_card(title):
+    if 'user_id' in session:
+        user = User.query.filter_by(user_id=session['user_id']).first()
+        if not user:
+            return redirect(url_for('login'))
+
+        # 디버그 로그 추가
+        print(f"사용자 ID: {user.id}, 제목: {title}")
+
+        # 주어진 제목과 사용자 ID로 카드 검색
+        card = Flashcard.query.filter_by(title=title, user_id=user.id).first()
+        if card:
+            # 카드가 존재할 경우 템플릿으로 카드 제목과 내용을 전달
+            return render_template('play_card.html', title=card.title, card=card)
+        else:
+            # 카드가 없을 경우 오류 메시지 출력
+            error_message = f"제목 '{title}'에 해당하는 카드를 찾을 수 없습니다."
+            print(error_message)  # 오류 로그 출력
+            return error_message, 404
+    else:
+        return redirect(url_for('login'))
+
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     if 'user_id' not in session:
