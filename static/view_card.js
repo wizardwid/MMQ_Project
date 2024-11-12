@@ -1,6 +1,10 @@
 const cardTitleElement = document.getElementById('cardTitle');
 const cardsContainer = document.getElementById('cardsContainer');
 const saveBtn = document.getElementById('savebtn');
+const modal = document.getElementById("confirmationModal");
+const playButton = document.getElementById("confirmPlay");
+const editButton = document.getElementById("cancelPlay");
+const closeButton = document.getElementsByClassName("close")[0];
 
 // 카드 제목 가져오기
 const cardTitle = cardTitleElement.textContent.trim();
@@ -107,6 +111,7 @@ function autoResize(input) {
 
 // 저장 버튼 클릭 시 카드 저장
 saveBtn.addEventListener('click', function() {
+    // 카드 내용 확인
     const textareas = cardsContainer.querySelectorAll('textarea');
     const contents = Array.from(textareas).map(textarea => {
         const cardDiv = textarea.closest('.card');
@@ -119,30 +124,63 @@ saveBtn.addEventListener('click', function() {
         }; 
     });
 
-    // 데이터 저장
-    fetch(`/save_cards`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            cards: contents.filter(card => 
-                card.content.trim() !== "" && 
-                (card.id === null || card.content !== card.originalContent)  // 변경된 카드만 저장
-            )
+    // 변경된 카드가 있는지 확인
+    const modifiedCards = contents.filter(card => 
+        card.content.trim() !== "" && (card.id === null || card.content !== card.originalContent)  // 내용이 변경되었거나 새 카드인 경우
+    );
+
+    if (modifiedCards.length > 0) {
+        // 변경된 카드가 있으면 모달 띄우기
+        modal.style.display = "block";  // 먼저 모달을 띄운다
+
+        // 데이터 저장
+        fetch(`/save_cards`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                cards: modifiedCards
+            })
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert("변경 사항이 저장되었습니다!");
-            fetchCardData(cardTitle); // 저장 후 해당 제목에 맞는 카드만 새로 불러오기
-        } else {
-            alert("저장 중 문제가 발생했습니다: " + data.error);
-        }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("저장 중 문제가 발생했습니다.");
-    });
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("변경 사항이 저장되었습니다!");  // 변경된 카드가 있을 경우에만 알림
+                fetchCardData(cardTitle);  // 저장 후 해당 제목에 맞는 카드만 새로 불러오기
+            } else {
+                alert("저장 중 문제가 발생했습니다: " + data.error);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("저장 중 문제가 발생했습니다.");
+        });
+    } else {
+        alert("변경 사항이 없습니다.");  // 변경된 카드가 없을 경우 알림
+    }
 });
+
+// '예' 버튼 클릭 시 play_card.html로 이동
+playButton.addEventListener('click', function() {
+    window.location.href = "/play_card/{{ card.id }}";  // card.id에 맞는 URL로 이동
+    modal.style.display = "none";  // 모달 닫기
+});
+
+// '아니오' 버튼 클릭 시 모달 닫기
+editButton.addEventListener('click', function() {
+    window.location.href = "/edit_quiz";
+    modal.style.display = "none";  // 모달 닫기
+});
+
+// 모달 닫기 버튼 클릭 시 모달 닫기
+closeButton.addEventListener('click', function() {
+    modal.style.display = "none";
+});
+
+// 모달 외부 클릭 시 모달 닫기
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};

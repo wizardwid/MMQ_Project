@@ -129,3 +129,71 @@ body::-webkit-scrollbar {
     top: 80%;
     left: 76%;
 }
+
+/* 모달 스타일 */
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); /* 검은 배경 */
+    text-align: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 30%;
+    height: 200px;
+}
+
+h2{
+    font-family: 'HakgyoansimDunggeunmisoTTF-B';
+    font-size: 30px;
+    position: relative;
+    top: 10%;
+}
+
+#confirmPlay, #cancelPlay{
+    width: 20%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: #C0C78C;
+    font-size: 20px;
+    font-family: 'TTLaundryGothicB';
+    color: #8A6F55;
+    position: relative;
+    top: 10%;
+    left: -2%;
+    margin-left: 5%;
+}
+
+#confirmPlay:hover, #cancelPlay:hover {
+    background-color: #8A6F55;
+    color: #fff;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    top: -5%;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -16,6 +16,15 @@
         </div>
         <button id="savebtn">Save</button>
     </div>
+    
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>퀴즈를 시작하시겠습니까?</h2>
+            <button id="confirmPlay">예</button>
+            <button id="cancelPlay">아니오</button>
+        </div>
+    </div>
     <script src="{{ url_for('static', filename='view_quiz.js') }}" defer></script>
 </body>
 </html>
