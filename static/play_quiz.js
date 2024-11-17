@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     displayQuiz(quizzes[currentQuizIndex]);  // 다음 퀴즈 렌더링
                                 } else {
                                     alert("모든 퀴즈를 완료했습니다.");
-                                    window.location.href = "/edit_quiz";
+                                    window.location.href = "/category";
                                 }
                             }
                         }

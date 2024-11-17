@@ -156,8 +156,8 @@ saveBtn.addEventListener('click', function() {
 
 // 플레이 버튼 클릭 시 모달 띄우기
 playBtn.addEventListener('click', function() {
-    const quizTitle = quizTitleElement ? quizTitleElement.textContent.trim() : '';  // 제목을 직접 가져옵니다
-    if (quizTitle) {
+    const cardTitle = cardTitleElement ? cardTitleElement.textContent.trim() : '';  // 제목을 직접 가져옵니다
+    if (cardTitle) {
         modal.style.display = "block";  // 모달 띄우기
     } else {
         alert("퀴즈 제목을 찾을 수 없습니다.");

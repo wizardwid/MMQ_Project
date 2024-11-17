@@ -61,9 +61,9 @@ body::-webkit-scrollbar {
     font-size: 40px;
     text-align: center; /* 수평 가운데 정렬 */
     width: 40%; /* 카드 너비에 맞게 설정 */
-    height: 200px;
+    height: 250px;
     padding: 8px;
-    padding-top: 75px; /* 텍스트를 수직 중앙에 배치하기 위한 패딩 설정 */
+    padding-top: 100px; /* 텍스트를 수직 중앙에 배치하기 위한 패딩 설정 */
     box-sizing: border-box; /* 패딩 포함해서 너비 조정 */
     border-radius: 10px;
     border: none;
