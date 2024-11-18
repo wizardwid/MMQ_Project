@@ -269,16 +269,19 @@ def delete_cards_by_title():
         print(f"Error while deleting cards: {str(e)}")
         return jsonify({"success": False, "error": "요청을 처리하는 동안 오류가 발생했습니다"}), 500
 
-@app.route('/play_card/<title>', methods=['GET'])
-def play_card(title):
-    if 'user_id' in session:
-        user = User.query.filter_by(user_id=session['user_id']).first()
-        card = Flashcard.query.filter_by(title=title, user_id=user.id).first()
-        if card:
-            return render_template('play_card.html', card=card, title=card.title)
-        else:
-            return f"'{title}'에 해당하는 카드를 찾을 수 없습니다", 404
-    return redirect(url_for('login'))
+@app.route('/play_card', methods=['GET'])
+def play_card():
+    title = request.args.get('title')  # URL에서 'title' 파라미터를 가져옴.
+    if title:
+        if 'user_id' in session:
+            user = User.query.filter_by(user_id=session['user_id']).first()
+            card = Flashcard.query.filter_by(title=title, user_id=user.id).first()
+            if card:
+                return render_template('play_card.html', card=card, title=card.title)
+            else:
+                return f"'{title}'에 해당하는 카드를 찾을 수 없습니다", 404
+        return redirect(url_for('login'))
+    return redirect(url_for('index'))  # title이 없을 경우 홈으로 리다이렉트
 
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():

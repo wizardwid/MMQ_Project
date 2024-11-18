@@ -168,7 +168,7 @@ playBtn.addEventListener('click', function() {
 playButton.addEventListener('click', function() {
     const cardTitle = cardTitleElement ? cardTitleElement.textContent.trim() : '';  // 제목을 직접 가져옵니다
     if (cardTitle) {
-        window.location.href = `/play_card/${encodeURIComponent(cardTitle)}`;  // 제목을 URL 파라미터로 추가
+        window.location.href = `/play_card?title=${encodeURIComponent(cardTitle)}`;  // 제목을 URL 파라미터로 추가
         modal.style.display = "none";  // 모달 닫기
     } else {
         alert("퀴즈 제목을 찾을 수 없습니다.");
